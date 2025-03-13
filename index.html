@@ -240,8 +240,16 @@ input, textarea {
             <img src="balaji.png" alt="Shree Balaji" loading="lazy">
             
             <span class="handwriting-text">
-                <b><span class="lordeffect">HAPPY BIRTHDAY</span></b>
-            </span>
+                <b>
+                    <!-- Video -->
+<video id="myVideo" width="100%" autoplay muted loop>
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<!-- Floating Mute/Unmute Button -->
+<button id="muteButton" class="floating-button" onclick="toggleMute()">🔊</button>
+ </span>
             <br><br>
             <span class="heart-beat">❤️</span>
             <span class="handwriting-names">Vashista</span>
@@ -254,13 +262,8 @@ input, textarea {
             </span>
         </div>
 
-        <!-- Background Music -->
-        <audio id="myAudio" autoplay loop>
-            <source src="music.mp3" type="audio/mpeg">
-        </audio>
 
-        <!-- Floating Buttons -->
-        <button class="floating-button" onclick="toggleAudio()">🔇</button>
+       
         <button class="floating-wishes-button" onclick="openWishesPopup()">💌</button>
 
         <!-- Wishes Popup -->
@@ -292,20 +295,18 @@ input, textarea {
             }, 1500);
         });
 
-        // Toggle Background Audio
-        function toggleAudio() {
-            const audio = document.getElementById("myAudio");
-            const button = document.querySelector(".floating-button");
+        function toggleMute() {
+    var video = document.getElementById("myVideo");
+    var button = document.getElementById("muteButton");
 
-            if (audio.paused) {
-                audio.play();
-                button.innerHTML = "🔊";
-            } else {
-                audio.pause();
-                button.innerHTML = "🔇";
-            }
-        }
-
+    if (video.muted) {
+        video.muted = false;
+        button.innerHTML = "🔇"; // Change button icon/text
+    } else {
+        video.muted = true;
+        button.innerHTML = "🔊"; // Change button icon/text
+    }
+}
         // Open & Close Wishes Popup
         function openWishesPopup() {
             document.getElementById("wishesPopup").style.display = "block";
